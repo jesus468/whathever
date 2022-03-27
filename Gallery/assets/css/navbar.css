@@ -1,0 +1,22 @@
+@media (max-width: 460px) {
+    .navbar-brand {
+        display: inline-block;
+        padding-top: 0.55rem;
+        padding-bottom: 0.55rem;
+        margin-right: 1rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+}
+
+.navigation {
+    -moz-transition: 1s;
+    -webkit-transition: 1s;
+    transition: 1s;
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    width: 100%;
+    background-color: white;
+  }
