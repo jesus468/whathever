@@ -248,12 +248,33 @@ function setPositionByIndex() {
         $(".slider-pager a[href='" + _this + "']").addClass("active");
 
         $(".slide.first .main-title").css("opacity", .5);
-        $(".slide .image").each(function (e) {
-            var $this = $(this);
-            setTimeout(function () {
-                $this.css("opacity", .5);
-            }, e * 10);
-        });
+        var j;
+        var randomNumbers = [];
+        for(j=0;j<4;j++){
+            let rando = Math.floor(Math.random()*$slide.length);
+            randomNumbers[j] = rando ;
+        }
+        
+       /*$(".slide .image").each(function (e) {
+            //var $this = $(this);
+            */
+            for(j=0;j<4;j++){
+                //console.log(randomNumbers[j]);
+                //setTimeout(function () {
+                //randomNumbers[j].css("opacity", .5)
+                //}, e * 10);
+                //$(".slide")[randomNumbers[j]].css("opacity", .5);
+                var yele = [];
+                yele[j] = $(".image")[randomNumbers[j]];
+                //console.log($(".slide")[randomNumbers[j]]);
+            }
+            for(j=0;j<4;j++){
+                console.log(yele[j]); 
+            }
+                    /*});*/
+
+
+        //console.log($slide.length);
 
         selectedTranslateX = $(_this).attr("data-position-x") * -1;
         selectedTranslateY = $(_this).attr("data-position-y") * -1;
