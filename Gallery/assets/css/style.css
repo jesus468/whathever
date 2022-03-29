@@ -164,6 +164,7 @@ p {
 
 img {
   max-width: 100%;
+
 }
 
 /* 2. Universal classes */
@@ -1024,7 +1025,7 @@ img{
   -webkit-transform: translateX(0px) rotateZ(0deg);
   transform: translateX(0px) rotateZ(0deg);
   perspective: 1000px;
-  z-index: 5;
+
 }
 
 .outer-wrapper, .inner-wrapper {

@@ -53,13 +53,16 @@ $(function () {
                 nextImage = "#" + $slide.first()[0].id;
                 play(nextImage);
             }
+    console.log(nextImage);
+
     }
 
+/*
     function animatedOne() {
         $(".animate").removeClass("idle");
         play("#0");
     }
-
+*/
     window.onload = hideLoader();
 
     setTimeout(function() {
@@ -129,17 +132,9 @@ $(function () {
             play(prevImage);
         }
     });
+    $slide.on("dragstart", function (event) { event.preventDefault(); });
 
 /*
-####################################################################################
-####################################################################################
-####################################################################################
-####################################################################################
-####################################################################################
-####################################################################################
-####################################################################################
-####################################################################################
-####################################################################################
 ####################################################################################
 ####################################################################################
 ####################################################################################
@@ -160,28 +155,30 @@ let isDragging = false,
   animationID,
   currentIndex = 0;
 
-slides.forEach((slide, index) => {
-    sli.addEventListener('touchstart', touchStart(index))
+//slides.forEach((slide, index) => {
+    sli.addEventListener('touchstart', touchStart())
     sli.addEventListener('touchend', touchEnd)
-})
+//})
 
 function getPositionY(event) {
     return event.type.includes('mouse') ? event.pageY : event.touches[0].clientY
 }
-
+/*
 function animation() {
     setSliderPosition()
     if (isDragging) requestAnimationFrame(animation)
-}  
+} */ 
 
-function touchStart(index) {
+function touchStart() {
     return function (event) {
-      currentIndex = index
+      //currentIndex = index
       startPos = getPositionY(event)
       //isDragging = true
       //animationID = requestAnimationFrame(animation)
       //sli.classList.add('grabbing')
-      console.log(startPos)
+
+
+      //console.log(startPos)
     }
 }
 function touchEnd(k) {
@@ -192,7 +189,7 @@ function touchEnd(k) {
     //console.log(prevTranslate);
 
     yPos2=k.changedTouches[0].pageY;
-    console.log("esto es yPos2", yPos2);
+    //console.log("esto es yPos2", yPos2);
 
 
     // if moved enough negative then snap to next slide if there is one
@@ -201,36 +198,36 @@ function touchEnd(k) {
     }else if (startPos > yPos2){
         animatedNext(), function () {
             $(".animate").removeClass("idle");
-            if ($(selectedImage).next().length) {
+            /*if ($(selectedImage).next().length) {
                 nextImage = "#" + $(selectedImage).next()[0].id;
                 play(nextImage);
             }
-            else {
+            else {*/
                 nextImage = "#" + $slide.first()[0].id;
                 play(nextImage);
-            }
+            //}
         };
-        console.log("bajando (hacia delante)");
+        //console.log("bajando (hacia delante)");
     }else{
     // if moved enough positive then snap to previous slide if there is one
-    console.log("subiendo (hacia atras)");
+        //console.log("subiendo (hacia atras)");
 
         if ($(selectedImage).prev().length) {
             prevImage = "#" + $(selectedImage).prev()[0].id;
             play(prevImage);
-        }
-        else {
+        
+        }else {
             prevImage = "#" + $slide.last()[0].id;
             play(prevImage);
         }
         //setPositionByIndex()
-       // sli.classList.remove('grabbing')
+        sli.classList.remove('grabbing')
 
     }
 
 
 }
-
+/*
 function setPositionByIndex() {
     currentTranslate = currentIndex * -window.innerWidth
     prevTranslate = currentTranslate
@@ -240,90 +237,8 @@ function setPositionByIndex() {
   function setSliderPosition() {
     sli.style.transform = `translateX(${currentTranslate}px)`
   }
-  
+*/
 
-
-
-
-
-
-/*
-if(window.screen.width < 992){
-    $(".outer-wrapper").on("touchstart", function () {
-            var _this = "#" + $(this).attr("id");
-            if ($body.hasClass("zoomed-out")) {
-                play(_this);
-            }
-        });
-   // $(".outer-wrapper").on('touchstart', function(event){   
-    $(".outer-wrapper").on('touchstart', function(o) {
-        console.log("ejecutando mouse down");
-        yPos = o.originalEvent.changedTouches[0].pageY;
-          
-            //var touch = event.targetTouches[0];
-            //console.log('imprimiendo touch ');
-            // console.log(touch);
-            console.log('imprimiendo Ypos '+ yPos);
-
-            /*
-            """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-                ANTES DE TOMAR LA DECISION ESPERAR EL DATO DEL TOUCHEND
-            """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-            *//*
-        });
-        
-   // })
-   /*
-    const asd = ()=>{
-        return new Promise((resolve, reject) =>{
-            resolve();
-        });
-    };
-    asd().then()*//*
-
-        $(".body").on('touchend', function(k){
-    
-            yPos2=k.originalEvent.changedTouches[0].pageY;
-                console.log('imprimiendo Ypos2 '+ yPos2);
-        })
-
-        $(".outer-wrapper").on('touchend',function(event){
-                $(".body").on('touchend', function(k){      
-                    yPos2=k.originalEvent.changedTouches[0].pageY;
-                    console.log('imprimiendo Ypos2 '+ yPos2);
-                })
-            console.log("ejecutando mouse up");
-            if(yPos == yPos2){
-            }else{
-                if(yPos < yPos2){
-                    console.log("bajaste la pagina");
-                    animatedNext();
-                }else{
-                    //play(prevImage);
-                    console.log("subiste la pagina");
-                    
-                        $(".animate").removeClass("idle");
-                        animatedNext().preventDefault();
-                        if ($(selectedImage).prev().length) {
-                            prevImage = "#" + $(selectedImage).prev()[0].id;
-                            play(prevImage);
-                        }
-                        else {
-                            prevImage = "#" + $slide.last()[0].id;
-                            play(prevImage);
-                        }   
-                }
-            }
-            console.log(yPos);
-            console.log(yPos2);      
-        })
-    
-    //});
-};*/
-
-
-
-    $slide.on("dragstart", function (event) { event.preventDefault(); });
 
     function play(_this) {
         animationFinished = false;
@@ -337,7 +252,7 @@ if(window.screen.width < 992){
             var $this = $(this);
             setTimeout(function () {
                 $this.css("opacity", .5);
-            }, e * 40);
+            }, e * 10);
         });
 
         selectedTranslateX = $(_this).attr("data-position-x") * -1;
@@ -455,7 +370,7 @@ if(window.screen.width < 992){
         }
     });
 
-    $(".outer-wrapper").on("touchstart", function (e) {
+    $(document.body).on("touchstart", ".outer-wrapper", function (e) {
         if ($body.hasClass("zoomed-out")) {
             setTimeout(function () {
                 $dragging = $(e.target);
@@ -473,12 +388,12 @@ if(window.screen.width < 992){
         pageWrapperLastPositionY = moveY;
         $(".inner-wrapper").css("transition", "1s");
     });
-
+/*
     console.log("posicion X del primer click", firstClickPositionX);
     console.log("posicion y del primer click", firstClickPositionY);
     console.log("posicion X al soltar", pageWrapperLastPositionX);
     console.log("posicion y al soltar", pageWrapperLastPositionY);
-
+*/
 
     //  End 3D Parallax Slider ---------------------------------------------------------------------------------------------
 
@@ -533,7 +448,8 @@ if(window.screen.width < 992){
     var oldTimeStamp = 0;
     var newTimeStamp = 0;
     var acceleration = 80;
-    v
+    var delta;
+
     $(".page-wrapper").on("mousewheel", function (e) {
         oldTimeStamp = newTimeStamp;
         newTimeStamp = e.timeStamp;
@@ -721,93 +637,93 @@ function drawScrollbar() {
 // [10. Magnific Popup]
 function ln_magnificPopup() {
     if( document.querySelectorAll('.mfp-image').length > 0 ||
-      document.querySelectorAll('.mfp-gallery').length > 0 ||
-      document.querySelectorAll('.mfp-iframe').length > 0 ||
-      document.querySelectorAll('.mfp-ajax').length > 0 ||
-      document.querySelectorAll('.open-popup-link').length > 0 ){
+        document.querySelectorAll('.mfp-gallery').length > 0 ||
+        document.querySelectorAll('.mfp-iframe').length > 0 ||
+        document.querySelectorAll('.mfp-ajax').length > 0 ||
+        document.querySelectorAll('.open-popup-link').length > 0 ){
 
-      if(!$().magnificPopup) {
-        console.log('MagnificPopup: magnificPopup not defined.');
-        return true;
-      }
+        if(!$().magnificPopup) {
+            console.log('MagnificPopup: magnificPopup not defined.');
+            return true;
+        }
 
-      $('.mfp-image').magnificPopup({
-        type:'image',
-        closeMarkup: '<button title="%title%" type="button" class="mfp-close"><i class="ion-android-close"></i></button>',
-        removalDelay: 300,
-        mainClass: 'mfp-fade'
-      });
-
-      $('.mfp-gallery').each(function() {
-        $(this).magnificPopup({
-          delegate: 'a',
-          type: 'image',
-          gallery: {
-            enabled: true
-          },
-          arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>',
-          closeMarkup: '<button title="%title%" type="button" class="mfp-close"><i class="ion-android-close"></i></button>',
-          removalDelay: 300,
-          mainClass: 'mfp-fade'
+        $('.mfp-image').magnificPopup({
+            type:'image',
+            closeMarkup: '<button title="%title%" type="button" class="mfp-close"><i class="ion-android-close"></i></button>',
+            removalDelay: 300,
+            mainClass: 'mfp-fade'
         });
-      });
 
-      $('.mfp-iframe').magnificPopup({
+        $('.mfp-gallery').each(function() {
+            $(this).magnificPopup({
+                delegate: 'a',
+                type: 'image',
+                gallery: {
+                enabled: true
+                },
+                arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>',
+                closeMarkup: '<button title="%title%" type="button" class="mfp-close"><i class="ion-android-close"></i></button>',
+                removalDelay: 300,
+                mainClass: 'mfp-fade'
+            });
+        });
+
+        $('.mfp-iframe').magnificPopup({
         type: 'iframe',
         iframe: {
-          patterns: {
-            youtube: {
-              index: 'youtube.com/',
-              id: 'v=',
-              src: '//www.youtube.com/embed/%id%?autoplay=1'
+            patterns: {
+                youtube: {
+                    index: 'youtube.com/',
+                    id: 'v=',
+                    src: '//www.youtube.com/embed/%id%?autoplay=1'
+                },
+                vimeo: {
+                    index: 'vimeo.com/',
+                    id: '/',
+                    src: '//player.vimeo.com/video/%id%?autoplay=1'
+                },
+                gmaps: {
+                    index: '//maps.google.',
+                    src: '%id%&output=embed'
+                }
             },
-            vimeo: {
-              index: 'vimeo.com/',
-              id: '/',
-              src: '//player.vimeo.com/video/%id%?autoplay=1'
+            srcAction: 'iframe_src'
             },
-            gmaps: {
-              index: '//maps.google.',
-              src: '%id%&output=embed'
+            closeMarkup: '<button title="%title%" type="button" class="mfp-close"><i class="ion-android-close"></i></button>',
+            removalDelay: 300,
+            mainClass: 'mfp-fade'
+        });
+
+        $('.mfp-ajax').magnificPopup({
+            type: 'ajax',
+            ajax: {
+                settings: null,
+                cursor: 'mfp-ajax-cur',
+                tError: '<a href="%url%">The content</a> could not be loaded.'
+            },
+            midClick: true,
+            closeMarkup: '<button title="%title%" type="button" class="mfp-close"><i class="ion-android-close"></i></button>',
+            removalDelay: 300,
+            mainClass: 'mfp-fade',
+            callbacks: {
+                ajaxContentAdded: function(mfpResponse) {
+                ln_Slider();
+                }
             }
-          },
-          srcAction: 'iframe_src'
-        },
-        closeMarkup: '<button title="%title%" type="button" class="mfp-close"><i class="ion-android-close"></i></button>',
-        removalDelay: 300,
-        mainClass: 'mfp-fade'
-      });
+        });
 
-      $('.mfp-ajax').magnificPopup({
-        type: 'ajax',
-        ajax: {
-          settings: null,
-          cursor: 'mfp-ajax-cur',
-          tError: '<a href="%url%">The content</a> could not be loaded.'
-        },
-        midClick: true,
-        closeMarkup: '<button title="%title%" type="button" class="mfp-close"><i class="ion-android-close"></i></button>',
-        removalDelay: 300,
-        mainClass: 'mfp-fade',
-        callbacks: {
-          ajaxContentAdded: function(mfpResponse) {
-           ln_Slider();
-          }
-        }
-      });
+        $('.open-popup-link').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            closeMarkup: '<button title="%title%" type="button" class="mfp-close"><i class="ion-android-close"></i></button>',
+            removalDelay: 300,
+            mainClass: 'mfp-zoom-in'
+        });
 
-      $('.open-popup-link').magnificPopup({
-        type: 'inline',
-        midClick: true,
-        closeMarkup: '<button title="%title%" type="button" class="mfp-close"><i class="ion-android-close"></i></button>',
-        removalDelay: 300,
-        mainClass: 'mfp-zoom-in'
-      });
-
-      $('.popup-modal-dismiss').on('click', function (e) {
-        e.preventDefault();
-        $.magnificPopup.close();
-      });
+        $('.popup-modal-dismiss').on('click', function (e) {
+            e.preventDefault();
+            $.magnificPopup.close();
+        });
 
     }
-  }
+}
