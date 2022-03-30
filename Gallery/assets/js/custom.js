@@ -53,7 +53,7 @@ $(function () {
                 nextImage = "#" + $slide.first()[0].id;
                 play(nextImage);
             }
-    console.log(nextImage);
+    //console.log(nextImage);
 
     }
 
@@ -254,7 +254,7 @@ function setPositionByIndex() {
             var rando = Math.floor(Math.random()*$slide.length) 
 
             $(".slide .image")[rando].classList.add("dis")
-            console.log(rando);
+            //console.log(rando);
             
         }
         
@@ -275,6 +275,13 @@ function setPositionByIndex() {
         selectedRotation = $(_this).attr("data-rotation") * -1;
         selectedImage = $(_this);
 
+        setTimeout(function(){
+            $(".slide .image").each(function(e){
+                $(".image").removeClass("dis")
+            })
+        }, 900)
+        //console.log(rando)
+
         $(".inner-wrapper").css({ 'transform': 'translateZ(-' + sceneMaxSize / 1.5 + 'px) translateX(' + selectedTranslateX + 'px) translateY(' + selectedTranslateY + 'px)' });
 
         selectedImage.addClass("active");
@@ -282,7 +289,6 @@ function setPositionByIndex() {
         $(".slide.active").css("pointer-events", "auto");
 
         setTimeout(function () {
-            $(".slide .image")[rando].classList.remove("dis")
 
             $(".slide .image").css("opacity", 0);
             selectedImage.find(".image").css("opacity", 1);
