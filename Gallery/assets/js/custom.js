@@ -58,13 +58,6 @@ $(function () {
     //console.log(nextImage);
 
     }
-
-/*
-    function animatedOne() {
-        $(".animate").removeClass("idle");
-        play("#0");
-    }
-*/
     window.onload = hideLoader();
 
     setTimeout(function() {
@@ -165,30 +158,15 @@ let isDragging = false,
 function getPositionY(event) {
     return event.type.includes('mouse') ? event.pageY : event.touches[0].clientY
 }
-/*
-function animation() {
-    setSliderPosition()
-    if (isDragging) requestAnimationFrame(animation)
-} */ 
 
 function touchStart() {
     return function (event) {
       //currentIndex = index
       startPos = getPositionY(event)
-      //isDragging = true
-      //animationID = requestAnimationFrame(animation)
-      //sli.classList.add('grabbing')
-
-
       //console.log(startPos)
     }
 }
 function touchEnd(k) {
-    //cancelAnimationFrame(animationID)
-    //isDragging = false
-    //const movedBy = currentTranslate - prevTranslate
-    //console.log(currentTranslate);
-    //console.log(prevTranslate);
 
     yPos2=k.changedTouches[0].pageY;
     //console.log("esto es yPos2", yPos2);
@@ -196,27 +174,12 @@ function touchEnd(k) {
 
     // if moved enough negative then snap to next slide if there is one
     if(startPos == yPos2){
-       /* var $this = $(this);
-        var ya = $(".mfp-image")[1] ; 
-        var ya2 = document.querySelector("#xfa") ;
-        //$path.attr("href=ya")
-        //$path.attr()
-        //ya2.innerHTML= '<href='+ ya2.href +'>';
-        //var ta = 
-        //console.log(ta)
-        console.log($this);
-*/
+ 
     }else if (startPos > yPos2){
         animatedNext(), function () {
             $(".animate").removeClass("idle");
-            /*if ($(selectedImage).next().length) {
-                nextImage = "#" + $(selectedImage).next()[0].id;
-                play(nextImage);
-            }
-            else {*/
                 nextImage = "#" + $slide.first()[0].id;
                 play(nextImage);
-            //}
         };
         //console.log("bajando (hacia delante)");
     }else{
@@ -231,24 +194,10 @@ function touchEnd(k) {
             prevImage = "#" + $slide.last()[0].id;
             play(prevImage);
         }
-        //setPositionByIndex()
         sli.classList.remove('grabbing')
 
     }
-
-
 }
-/*
-function setPositionByIndex() {
-    currentTranslate = currentIndex * -window.innerWidth
-    prevTranslate = currentTranslate
-    setSliderPosition()
-  }
-  
-  function setSliderPosition() {
-    sli.style.transform = `translateX(${currentTranslate}px)`
-  }
-*/
 
     $("path").css("opacity", "0");
     $(".slide.first path").css("opacity", 1);
@@ -266,21 +215,8 @@ function setPositionByIndex() {
             var rando = Math.floor(Math.random()*$slide.length) 
 
             $(".slide .image")[rando].classList.add("dis")
-            //console.log(rando);
-            
         }
         
-        
-        
-        
-        /*.each(function (e) {
-            var $this = $(this);
-            setTimeout(function () {
-                $this.css("opacity", .5);
-            }, e * 10);
-        });*/
-        
-
         selectedTranslateX = $(_this).attr("data-position-x") * -1;
         selectedTranslateY = $(_this).attr("data-position-y") * -1;
         selectedTranslateZ = $(_this).attr("data-position-z") * -1;
@@ -292,7 +228,6 @@ function setPositionByIndex() {
                 $(".image").removeClass("dis")
             })
         }, 900)
-        //console.log(rando)
 
         $(".inner-wrapper").css({ 'transform': 'translateZ(-' + sceneMaxSize / 1.5 + 'px) translateX(' + selectedTranslateX + 'px) translateY(' + selectedTranslateY + 'px)' });
 
