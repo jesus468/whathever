@@ -249,32 +249,25 @@ function setPositionByIndex() {
 
         $(".slide.first .main-title").css("opacity", .5);
         var j;
-        var randomNumbers = [];
+
         for(j=0;j<4;j++){
-            let rando = Math.floor(Math.random()*$slide.length);
-            randomNumbers[j] = rando ;
+            var rando = Math.floor(Math.random()*$slide.length) 
+
+            $(".slide .image")[rando].classList.add("dis")
+            console.log(rando);
+            
         }
         
-       /*$(".slide .image").each(function (e) {
-            //var $this = $(this);
-            */
-            for(j=0;j<4;j++){
-                //console.log(randomNumbers[j]);
-                //setTimeout(function () {
-                //randomNumbers[j].css("opacity", .5)
-                //}, e * 10);
-                //$(".slide")[randomNumbers[j]].css("opacity", .5);
-                var yele = [];
-                yele[j] = $(".image")[randomNumbers[j]];
-                //console.log($(".slide")[randomNumbers[j]]);
-            }
-            for(j=0;j<4;j++){
-                console.log(yele[j]); 
-            }
-                    /*});*/
-
-
-        //console.log($slide.length);
+        
+        
+        
+        /*.each(function (e) {
+            var $this = $(this);
+            setTimeout(function () {
+                $this.css("opacity", .5);
+            }, e * 10);
+        });*/
+        
 
         selectedTranslateX = $(_this).attr("data-position-x") * -1;
         selectedTranslateY = $(_this).attr("data-position-y") * -1;
@@ -289,6 +282,8 @@ function setPositionByIndex() {
         $(".slide.active").css("pointer-events", "auto");
 
         setTimeout(function () {
+            $(".slide .image")[rando].classList.remove("dis")
+
             $(".slide .image").css("opacity", 0);
             selectedImage.find(".image").css("opacity", 1);
             selectedImage.find(".main-title").css("opacity", 1);
