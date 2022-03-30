@@ -134,7 +134,7 @@
     }
     a.maxim{
         display: block;
-        z-index: 0;
+        z-index: 10;
     }
 }
 
@@ -393,4 +393,7 @@ a.next, a.prev{
 }
 .spacee{
     margin-top: 1.5em;
+}
+.dis{
+    opacity: .5 !important;
 }
