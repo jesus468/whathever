@@ -132,12 +132,20 @@
     .text-brown {
         margin-right : auto;
     }
-    a.maxim{
-        display: block;
-        z-index: 10;
-    }
 }
-
+.maxim{
+    right: 30px;
+    top: 105px;
+    position: absolute;
+    font-size: 25px;
+    opacity: 1;
+    z-index: 100;
+    line-height: 25px;
+}
+svg{
+    fill: rgb(148, 141, 141);
+    z-index: 1;
+}
 .bg-brown2 {    
     background-image: url(../images/AD601.jpg);
     background-repeat: no-repeat;
