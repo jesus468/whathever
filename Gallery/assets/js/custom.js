@@ -56,7 +56,17 @@ $(function () {
                 play(nextImage);
             }
     //console.log(nextImage);
-
+    }
+    function animatedPrev(){
+        $(".animate").removeClass("idle");
+        if ($(selectedImage).prev().length) {
+            prevImage = "#" + $(selectedImage).prev()[0].id;
+            play(prevImage);
+        }
+        else {
+            prevImage = "#" + $slide.last()[0].id;
+            play(prevImage);
+        }
     }
     window.onload = hideLoader();
 
@@ -185,7 +195,8 @@ function touchEnd(k) {
     }else{
     // if moved enough positive then snap to previous slide if there is one
         //console.log("subiendo (hacia atras)");
-
+        animatedPrev()
+        /*
         if ($(selectedImage).prev().length) {
             prevImage = "#" + $(selectedImage).prev()[0].id;
             play(prevImage);
@@ -194,7 +205,7 @@ function touchEnd(k) {
             prevImage = "#" + $slide.last()[0].id;
             play(prevImage);
         }
-        sli.classList.remove('grabbing')
+        sli.classList.remove('grabbing')*/
 
     }
 }
