@@ -210,11 +210,9 @@ function touchEnd(k) {
         $(".slider-pager a[href='" + _this + "']").addClass("active");
         $(".slide.first .main-title").css("opacity", .5);
         var j;
-
         for(j=0;j<4;j++){
-            var rando = Math.floor(Math.random()*$slide.length) 
-
-            $(".slide .image")[rando].classList.add("dis")
+            var rando = Math.floor(Math.random()*$slide.length) ;
+            $(".slide .image")[rando].classList.add("dis");
         }
         
         selectedTranslateX = $(_this).attr("data-position-x") * -1;
@@ -227,7 +225,7 @@ function touchEnd(k) {
             $(".slide .image").each(function(e){
                 $(".image").removeClass("dis")
             })
-        }, 900)
+        }, 200)
 
         $(".inner-wrapper").css({ 'transform': 'translateZ(-' + sceneMaxSize / 1.5 + 'px) translateX(' + selectedTranslateX + 'px) translateY(' + selectedTranslateY + 'px)' });
 
@@ -243,7 +241,7 @@ function touchEnd(k) {
             selectedImage.find("path").css("opacity", 1);
             $(".inner-wrapper").css({ 'transform': 'translateZ(' + selectedTranslateZ + 'px) translateX(' + selectedTranslateX + 'px) translateY(' + selectedTranslateY + 'px)' });
             $outerWrapper.css({ 'transform': 'rotateZ(' + selectedRotation + 'deg)' });
-        }, 500);
+        }, 400);
 
         setTimeout(function () {
             $(selectedImage).find(".animate").each(function (e) {
@@ -259,7 +257,7 @@ function touchEnd(k) {
             $(".slide:not(.active) path").css("opacity", "0");
             $(".slide:not(.active) .main-title").css("opacity", "0");
             $(".slide:not(.active)").addClass("hide-description");
-        }, 1200);
+        }, 1000);
     }
 
     function randomNumber(method, sceneMaxSize) {
