@@ -332,6 +332,7 @@ svg{
 
 .d-space-title {
     justify-content: space-evenly;
+    height: 100px;
 }
 
 .img-boton-follow {
