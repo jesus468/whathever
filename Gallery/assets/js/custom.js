@@ -176,11 +176,11 @@ function touchEnd(k) {
     if(startPos == yPos2){
  
     }else if (startPos > yPos2){
-        animatedNext(), function () {
+        animatedNext()/*, function () {
             $(".animate").removeClass("idle");
-                nextImage = "#" + $slide.first()[0].id;
-                play(nextImage);
-        };
+                nextImage = "#" + $slide.first()[0].id;*/
+                //play(nextImage);
+        //};
         //console.log("bajando (hacia delante)");
     }else{
     // if moved enough positive then snap to previous slide if there is one
