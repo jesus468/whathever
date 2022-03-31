@@ -736,7 +736,6 @@ pre code {
 @media (max-width: 992px){
   .col-12-1{
     max-width: 49%;
-    height: auto;
 
   }
 }
@@ -17585,7 +17584,7 @@ div.icon-5x{
 
 @media (max-width: 575px) {
   .portfolio-item .item-media .media-container {
-    height: 30vh;
+    height: 25vh;
   }
 }
 @media (min-width: 576px) {
