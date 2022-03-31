@@ -736,7 +736,9 @@ pre code {
 @media (max-width: 992px){
   .col-12-1{
     max-width: 49%;
-
+  }
+  .col-12-2{
+    max-width: 49%;
   }
 }
 
@@ -7733,6 +7735,8 @@ button.bg-white:focus {
 .mb-4,
 .my-4 {
   margin-bottom: 1rem !important;
+  line-height: 100%;
+
 }
 .ti{
   display: flex;
@@ -16008,7 +16012,7 @@ p:last-child {
   margin-bottom: 0;
 }
 .space-top{
-  margin-top: 138px;
+  margin-top: 0px;
 }
 ::selection {
   color: #fff;
@@ -17568,7 +17572,6 @@ div.icon-5x{
 .item-media{
   border-radius: 100%;
   margin-bottom: 15px;
-
 }
 
 .portfolio-item .item-media a,
@@ -17585,6 +17588,16 @@ div.icon-5x{
 @media (max-width: 575px) {
   .portfolio-item .item-media .media-container {
     height: 25vh;
+  
+  }
+  .media-container{
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
   }
 }
 @media (min-width: 576px) {
@@ -17617,6 +17630,7 @@ div.icon-5x{
   bottom: -1px;
   left: -1px;
   right: -1px;
+
 }
 
 .bg-black {
