@@ -599,8 +599,7 @@ pre code {
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+
 }
 .row2{
   margin-top: -100px;
@@ -624,8 +623,8 @@ pre code {
 .col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {
   position: relative;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  /*padding-right: 15px;
+  padding-left: 15px;*/
 
   margin-top: 15px;
   
@@ -731,8 +730,15 @@ pre code {
 .col-12 {
   flex: 0 0 100%;
   max-width: 100%;
-  margin: 0 auto;
+
+  /*margin: 0 auto;*/
 }
+@media (max-width: 992px){
+  .col-12-1{
+    max-width: 49%;
+  }
+}
+
 
 .order-first {
   order: -1;
@@ -15997,10 +16003,12 @@ h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hov
   }
 }
 
-p:last-child {
+p:last-child {  
   margin-bottom: 0;
 }
-
+.space-top{
+  margin-top: 138px;
+}
 ::selection {
   color: #fff;
   background-color: #405be8;
@@ -17548,11 +17556,18 @@ div.icon-5x{
 
 .portfolio-item {
   position: relative;
+  display: flex;
+
 }
 
 .portfolio-item .item-media {
   position: relative;
   overflow: hidden;
+}
+.item-media{
+  border-radius: 100%;
+  margin-bottom: 15px;
+
 }
 
 .portfolio-item .item-media a,
@@ -17568,7 +17583,7 @@ div.icon-5x{
 
 @media (max-width: 575px) {
   .portfolio-item .item-media .media-container {
-    height: 70vh;
+    height: 30vh;
   }
 }
 @media (min-width: 576px) {
@@ -17725,6 +17740,7 @@ div.icon-5x{
 
 .bg-cover {
   background-size: cover;
+
 }
 
 .bg-contain {
@@ -17732,6 +17748,7 @@ div.icon-5x{
 }
 
 .bg-cover, .bg-contain {
+  
   background-repeat: repeat;
   background-position: center;
 }

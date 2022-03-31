@@ -400,7 +400,7 @@ a.next, a.prev{
     z-index: 6;
 }
 .spacee{
-    margin-top: 1.5em;
+    padding-top: 1.5em;
 }
 .dis{
     opacity: .5 !important;
