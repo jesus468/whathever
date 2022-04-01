@@ -42,7 +42,7 @@ $(function () {
             //setTimeout(animatedNext, 2000);
             //setTimeout(animatedNext, 6000);
             //setTimeout(animatedOne, 9000);
-        }, 3000);
+        }, 3200);
     }
 
     function animatedNext() {
@@ -58,7 +58,6 @@ $(function () {
     //console.log(nextImage);
     }
     function animatedPrev(){
-        $(".animate").removeClass("idle");
         if ($(selectedImage).prev().length) {
             prevImage = "#" + $(selectedImage).prev()[0].id;
             play(prevImage);
@@ -252,7 +251,7 @@ function touchEnd(k) {
             selectedImage.find("path").css("opacity", 1);
             $(".inner-wrapper").css({ 'transform': 'translateZ(' + selectedTranslateZ + 'px) translateX(' + selectedTranslateX + 'px) translateY(' + selectedTranslateY + 'px)' });
             $outerWrapper.css({ 'transform': 'rotateZ(' + selectedRotation + 'deg)' });
-        }, 400);
+        }, 700);
 
         setTimeout(function () {
             $(selectedImage).find(".animate").each(function (e) {
