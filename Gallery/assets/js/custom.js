@@ -55,9 +55,9 @@ $(function () {
                 nextImage = "#" + $slide.first()[0].id;
                 play(nextImage);
             }
-    //console.log(nextImage);
     }
     function animatedPrev(){
+        $(".animate").removeClass("idle");
         if ($(selectedImage).prev().length) {
             prevImage = "#" + $(selectedImage).prev()[0].id;
             play(prevImage);
@@ -170,42 +170,21 @@ function getPositionY(event) {
 
 function touchStart() {
     return function (event) {
-      //currentIndex = index
       startPos = getPositionY(event)
-      //console.log(startPos)
     }
 }
 function touchEnd(k) {
-
     yPos2=k.changedTouches[0].pageY;
-    //console.log("esto es yPos2", yPos2);
-
 
     // if moved enough negative then snap to next slide if there is one
     if(startPos == yPos2){
  
     }else if (startPos > yPos2){
-        animatedNext()/*, function () {
-            $(".animate").removeClass("idle");
-                nextImage = "#" + $slide.first()[0].id;*/
-                //play(nextImage);
-        //};
-        //console.log("bajando (hacia delante)");
+        animatedNext()
     }else{
     // if moved enough positive then snap to previous slide if there is one
         //console.log("subiendo (hacia atras)");
         animatedPrev()
-        /*
-        if ($(selectedImage).prev().length) {
-            prevImage = "#" + $(selectedImage).prev()[0].id;
-            play(prevImage);
-        
-        }else {
-            prevImage = "#" + $slide.last()[0].id;
-            play(prevImage);
-        }
-        sli.classList.remove('grabbing')*/
-
     }
 }
 
