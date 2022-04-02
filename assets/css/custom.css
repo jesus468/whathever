@@ -139,8 +139,15 @@
     position: absolute;
     font-size: 25px;
     opacity: 1;
-    z-index: 100;
+    z-index: 50;
     line-height: 25px;
+}
+.maximi{
+    right: 30px;
+    top: 105px;
+    position: absolute;
+    z-index: 155;
+    opacity: 1;
 }
 svg{
     fill: rgb(148, 141, 141);
