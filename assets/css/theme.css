@@ -731,7 +731,15 @@ pre code {
   flex: 0 0 100%;
   max-width: 100%;
 
-  /*margin: 0 auto;*/
+
+}
+.vertical-center{
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:flex;
+  flex-direction: row;
+
+  align-items: center;
 }
 @media (max-width: 992px){
   .col-12-1{
@@ -17572,6 +17580,7 @@ div.icon-5x{
 .item-media{
   border-radius: 100%;
   margin-bottom: 15px;
+  width: 100%;
 }
 
 .portfolio-item .item-media a,
@@ -17587,7 +17596,7 @@ div.icon-5x{
 
 @media (max-width: 575px) {
   .portfolio-item .item-media .media-container {
-    height: 25vh;
+    height: 20vh;
   
   }
   .media-container{
@@ -17602,12 +17611,12 @@ div.icon-5x{
 }
 @media (min-width: 576px) {
   .portfolio-item .item-media .media-container {
-    height: 70vh;
+    height: 30vh;
   }
 }
 @media (min-width: 768px) {
   .portfolio-item .item-media .media-container {
-    height: 70vh;
+    height: 40vh;
   }
 }
 @media (min-width: 992px) {
