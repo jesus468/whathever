@@ -42,7 +42,7 @@ $(function () {
             //setTimeout(animatedNext, 2000);
             //setTimeout(animatedNext, 6000);
             //setTimeout(animatedOne, 9000);
-        }, 3200);
+        }, 3600);
     }
 
     function animatedNext() {
@@ -108,6 +108,8 @@ $(function () {
     });
 
     selectedImage = $(".slide.first")[0];
+    var selectedImageHref = $(".slide.first a").attr("href");
+    $("#zoomImg").attr('href', selectedImageHref) 
     selectedTranslateX = 0;
     selectedTranslateY = 0;
 
@@ -175,7 +177,7 @@ function touchStart() {
 }
 function touchEnd(k) {
     yPos2=k.changedTouches[0].pageY;
-
+ 
     // if moved enough negative then snap to next slide if there is one
     if(startPos == yPos2){
  
@@ -188,16 +190,22 @@ function touchEnd(k) {
     }
 }
 
-    $("path").css("opacity", "0");
-    $(".slide.first path").css("opacity", 1);
+    
 
     function play(_this) {
+
         animationFinished = false;
         $body.removeClass("zoomed-out");
         $slide.removeClass("active");
         $(".slider-pager a").removeClass("active");
         $(".slider-pager a[href='" + _this + "']").addClass("active");
         $(".slide.first .main-title").css("opacity", .5);
+        
+        //BeforeUnloadEvent, el tiempo no se detrenda nosotrs aqui
+        /*var wey = $(".active ").attr("href");
+        alert(wey)*/
+        
+
         var j;
         for(j=0;j<4;j++){
             var rando = Math.floor(Math.random()*$slide.length) ;
@@ -223,11 +231,11 @@ function touchEnd(k) {
         $(".slide.active").css("pointer-events", "auto");
 
         setTimeout(function () {
-            $("path").css("opacity", 0);
+            //$("path").css("opacity", 0);
             $(".slide .image").css("opacity", 0);
             selectedImage.find(".image").css("opacity", 1);
             selectedImage.find(".main-title").css("opacity", 1);
-            selectedImage.find("path").css("opacity", 1);
+            //selectedImage.find("path").css("opacity", 1);
             $(".inner-wrapper").css({ 'transform': 'translateZ(' + selectedTranslateZ + 'px) translateX(' + selectedTranslateX + 'px) translateY(' + selectedTranslateY + 'px)' });
             $outerWrapper.css({ 'transform': 'rotateZ(' + selectedRotation + 'deg)' });
         }, 700);
@@ -241,9 +249,13 @@ function touchEnd(k) {
             });
             animationFinished = true;
             
+            var getActive = $(".inner-wrapper .active .mfp-image");
+            console.log(getActive.attr("href"))
+            $("#zoomImg").attr('href', getActive.attr("href")) 
+            
             
             $(".slide:not(.active) .image").css("opacity", "0");
-            $(".slide:not(.active) path").css("opacity", "0");
+            //$(".slide:not(.active) path").css("opacity", "0");
             $(".slide:not(.active) .main-title").css("opacity", "0");
             $(".slide:not(.active)").addClass("hide-description");
         }, 1000);
@@ -267,12 +279,7 @@ function touchEnd(k) {
             play(_this);
         }
     });
-    $path.on("click", function () {
-        var _this = "#" + $(this).attr("id");
-        if ($body.hasClass("zoomed-out")) {
-            play(_this);
-        }
-    });
+    
 
 
     $(".zoom-out").on("click", function (e) {
@@ -295,7 +302,7 @@ function touchEnd(k) {
         pageWrapperLastPositionY = selectedTranslateY;
 
     });
-
+/*
     $(document.body).on("mousemove", function (e) {
         if ($body.hasClass("zoomed-out")) {
             if ($dragging) {
@@ -354,7 +361,7 @@ function touchEnd(k) {
         pageWrapperLastPositionX = moveX;
         pageWrapperLastPositionY = moveY;
         $(".inner-wrapper").css("transition", "1s");
-    });
+    });*/
 /*
     console.log("posicion X del primer click", firstClickPositionX);
     console.log("posicion y del primer click", firstClickPositionY);
@@ -408,11 +415,16 @@ function touchEnd(k) {
             $body.removeClass("show-off-screen-content");
         }
     });
+    
     $path.on("click", function () {
         if ($body.hasClass("show-off-screen-content")) {
             $body.removeClass("show-off-screen-content");
         }
     });
+
+
+
+
     $(".bg-transfer").each(function () {
         $(this).css("background-image", "url(" + $(this).find("img").attr("src") + ")");
     });
