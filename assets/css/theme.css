@@ -17579,6 +17579,7 @@ div.icon-5x{
 }
 .item-media{
   border-radius: 100%;
+  margin: 0 10px;
   margin-bottom: 15px;
   width: 100%;
 }
