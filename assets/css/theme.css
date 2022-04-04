@@ -733,21 +733,32 @@ pre code {
 
 
 }
-.vertical-center{
+.centerB{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.vertical-center, 
+.vertical-center-about{
   display: -webkit-flex;
   display: -ms-flexbox;
   display:flex;
   flex-direction: row;
-
-  align-items: center;
+  align-items: center; 
 }
 @media (max-width: 992px){
+  .centerA{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .col-12-1{
     max-width: 49%;
   }
   .col-12-2{
     max-width: 49%;
   }
+ 
 }
 
 
@@ -1278,6 +1289,10 @@ pre code {
   }
 }
 @media (min-width: 992px) {
+  .col-xl-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
   .col-lg {
     flex-basis: 0;
     flex-grow: 1;
@@ -1556,11 +1571,11 @@ pre code {
     max-width: 41.6666666667%;
   }
 
-  .col-xl-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
 
+
+
+
+  
   .col-xl-7 {
     flex: 0 0 58.3333333333%;
     max-width: 58.3333333333%;
@@ -2011,6 +2026,7 @@ pre code {
   }
 }
 @media (max-width: 1199.98px) {
+  
   .table-responsive-xl {
     display: block;
     width: 100%;
@@ -4250,6 +4266,11 @@ input[type=button].btn-block {
   }
 }
 @media (max-width: 991.98px) {
+
+  .vertical-center-about{
+ 
+    flex-direction: column-reverse;    
+  }
   .navbar-expand-lg > .container,
 .navbar-expand-lg > .container-fluid,
 .navbar-expand-lg > .container-sm,
@@ -6583,9 +6604,7 @@ button.bg-white:focus {
   }
 }
 @media (min-width: 1200px) {
-  .d-xl-none {
-    display: none !important;
-  }
+  
 
   .d-xl-inline {
     display: inline !important;
@@ -7128,6 +7147,9 @@ button.bg-white:focus {
   }
 }
 @media (min-width: 992px) {
+  .d-xl-none {
+    display: none !important;
+  }
   .flex-lg-row {
     flex-direction: row !important;
   }

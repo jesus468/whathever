@@ -24,6 +24,7 @@
 
 .milky {
     font-family: 'Milky Matcha', sans-serif;
+    line-height: 30px;
 }
 
 .font-text {
@@ -72,9 +73,7 @@
     .wsp{
         margin-left: 0 !important;
     }
-    .bg-custom-dark {
-        margin-left: 1rem;
-    }
+
     
 }
 
@@ -290,6 +289,11 @@ svg{
 @media (max-width: 1100px) {
     .custom-background {
         margin-bottom: -200px;
+    }
+}
+@media (min-width: 1101px) {
+    .custom-background {
+        margin-bottom: -300px;
     }
 }
 
